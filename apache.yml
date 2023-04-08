@@ -1,24 +1,25 @@
 ---
     - hosts: webservers
       become: true
-      tasks:
-        - name: Install packages
-          yum:
-            name: httpd
-            state: present
-          when: ansible_pkg_mgr == 'yum'
-          apt:
-            name: apache2
-            state: present
-            when: ansible_pkg_mgr == 'apt'
-        - name: Start Apache server
-          service:
-            name: httpd
-            state: started
-            enabled: true
-            when: ansible_pkg_mgr == 'yum'
-        - name: Deploy static website
-          copy:
-            src: index.html
-            dest: /var/www/html/
-...
+      
+        tasks:
+            - name: Install packages
+              yum:
+                name: httpd
+                state: present
+              when: ansible_pkg_mgr == 'yum'
+              apt:
+                name: apache2
+                state: present
+                when: ansible_pkg_mgr == 'apt'
+            - name: Start Apache server
+              service:
+                name: httpd
+                state: started
+                enabled: true
+                when: ansible_pkg_mgr == 'yum'
+            - name: Deploy static website
+              copy:
+                src: index.html
+                dest: /var/www/html/
+    ...
