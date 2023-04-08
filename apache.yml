@@ -1,8 +1,7 @@
 ---
     - hosts: webservers
       become: true
-      
-        - tasks:
+      tasks :
             - name: Install packages
               yum:
                 name: httpd
@@ -22,4 +21,4 @@
               copy:
                 src: index.html
                 dest: /var/www/html/
-    ...
+   
