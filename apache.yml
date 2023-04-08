@@ -2,7 +2,6 @@
 - hosts: webservers
   become: true
   tasks:
-   
     - name: Install packages
       yum:
         name: httpd
