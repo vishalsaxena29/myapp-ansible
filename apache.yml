@@ -6,6 +6,7 @@
       yum:
         name: "httpd"
         state: "present"
+      when: ansible_pkg_mgr == 'yum'  
     - name: Start Apache server
       service:
         name: httpd
