@@ -6,11 +6,11 @@
       yum:
         name: httpd
         state: present
-      when: ansible_pkg_mgr == 'yum'
+        when: ansible_pkg_mgr == 'yum'
       apt:
         name: apache2
         state: present
-      when: ansible_pkg_mgr == 'apt'
+        when: ansible_pkg_mgr == 'apt'
     - name: Start Apache server
       service:
         name: httpd
